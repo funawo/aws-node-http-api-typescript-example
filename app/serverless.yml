@@ -1,0 +1,26 @@
+service: app
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  stage: beta
+  region: ap-northeast-1
+  runtime: nodejs18.x
+
+functions:
+  sampleGet:
+    handler: handler.sample
+    events:
+      - http:
+          path: /
+          method: get
+  samplePost:
+    handler: handler.sample
+    events:
+      - http:
+          path: /
+          method: post 
+
+plugins:
+  - serverless-plugin-typescript
+  - serverless-offline
