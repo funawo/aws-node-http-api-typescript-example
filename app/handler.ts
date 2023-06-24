@@ -1,4 +1,5 @@
 import { APIGatewayProxyEvent, APIGatewayProxyResult } from "aws-lambda";
+import { S3Client, GetObjectCommand } from "@aws-sdk/client-s3"
 
 export const sample = async (
   event: APIGatewayProxyEvent
@@ -11,6 +12,11 @@ export const sample = async (
     param = event.body
   }
   return {
+    headers: {
+      "Access-Control-Allow-Headers" : "Content-Type",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "OPTIONS,POST"
+    },
     statusCode: 200,
     body: JSON.stringify(
       {

@@ -20,6 +20,11 @@ functions:
       - http:
           path: /
           method: post 
+          # cors: true
+  # samlpeMock:
+  #   events:
+  #     - mock:
+  #         path: /mock
 
 plugins:
   - serverless-plugin-typescript
